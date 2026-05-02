@@ -724,3 +724,116 @@ body:has(button:hover) .cursor-ring {
 /* ===== Selection ===== */
 ::selection { background: var(--accent); color: var(--bg); }
 .accent { color: var(--accent); }
+
+/* ===== Hero Split Layout (photo + text) ===== */
+.hero-inner--split {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 4rem;
+    align-items: center;
+}
+.hero-left { display: flex; flex-direction: column; }
+
+/* ===== Hero Photo ===== */
+.hero-photo-wrap {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.hero-photo-card {
+    position: relative;
+    width: 340px;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: 0 0 0 1px rgba(0,255,136,0.08), 0 30px 80px rgba(0,0,0,0.6);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    flex-shrink: 0;
+}
+.hero-photo-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 0 1px rgba(0,255,136,0.18), 0 40px 100px rgba(0,0,0,0.7), 0 0 50px rgba(0,255,136,0.08);
+}
+.hero-photo-glow {
+    position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    background: linear-gradient(to bottom, transparent 60%, rgba(0,255,136,0.07) 100%);
+}
+.hero-photo-img {
+    width: 100%; display: block; object-fit: cover;
+}
+.hero-photo-badge {
+    position: absolute; bottom: 1.2rem; left: 50%;
+    transform: translateX(-50%);
+    background: rgba(8,11,16,0.88);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(0,255,136,0.3);
+    color: var(--accent); font-size: 0.75rem;
+    padding: 0.4rem 1.1rem; border-radius: 20px;
+    white-space: nowrap; z-index: 2;
+    display: flex; align-items: center; gap: 0.5rem;
+}
+.badge-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s ease infinite;
+}
+
+/* ===== Skill SVG Icons ===== */
+.skill-icon-svg {
+    width: 52px; height: 52px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 12px;
+    background: rgba(0,255,136,0.07);
+    border: 1px solid rgba(0,255,136,0.15);
+    margin-bottom: 1rem;
+    color: var(--accent);
+    transition: all var(--transition);
+}
+.skill-card:hover .skill-icon-svg {
+    background: rgba(0,255,136,0.14);
+    border-color: rgba(0,255,136,0.35);
+    transform: scale(1.08) rotate(-3deg);
+}
+
+/* ===== Contact SVG Icons ===== */
+.contact-icon-svg {
+    display: flex; align-items: center; justify-content: center;
+    width: 42px; height: 42px; flex-shrink: 0;
+    border-radius: 10px;
+    background: rgba(0,255,136,0.07);
+    border: 1px solid rgba(0,255,136,0.15);
+    color: var(--accent);
+}
+.contact-item { align-items: center; }
+
+/* ===== Project SVG Icons ===== */
+.project-img {
+    background: var(--bg3);
+    display: flex; align-items: center; justify-content: center;
+    height: 180px; position: relative; overflow: hidden;
+}
+.project-img::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 50% 60%, color-mix(in srgb, var(--card-accent, var(--accent)) 12%, transparent), transparent 70%);
+}
+.project-svg-icon {
+    position: relative; z-index: 1;
+    color: var(--card-accent, var(--accent));
+    opacity: 0.85;
+    transition: transform 0.3s ease, opacity 0.3s;
+}
+.project-card:hover .project-svg-icon {
+    transform: scale(1.12) translateY(-3px);
+    opacity: 1;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1100px) {
+    .hero-inner--split { grid-template-columns: 1fr; }
+    .hero-photo-wrap { justify-content: center; margin-top: 2rem; }
+    .hero-photo-card { width: 280px; }
+}
+@media (max-width: 600px) {
+    .hero-photo-card { width: 240px; }
+}
