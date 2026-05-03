@@ -1,16 +1,16 @@
-# ⚡ DevPortfolio — PHP Portfolio
+# DevPortfolio — PHP Portfolio
 
 A beautifully designed, interactive developer portfolio built with PHP and SQLite.
 
 ## Features
 
-- 🎨 **Terminal/hacker aesthetic** with neon green accents, custom cursor, animated grid
-- ✍️ **Typing animation** cycling through your titles
-- 📁 **Projects page** with tech stack filtering
-- 📝 **Blog system** powered by SQLite — no database server needed
-- 🔒 **Admin panel** with login, create, edit, and delete posts
-- 📱 **Fully responsive** with mobile navigation
-- ✨ **Scroll animations**, animated counters, glitch effects
+- **Terminal/hacker aesthetic** with neon green accents, custom cursor, animated grid
+- **Typing animation** cycling through your titles
+- **Projects page** with tech stack filtering
+- **Blog system** powered by SQLite — no database server needed
+- **Admin panel** with login, create, edit, and delete posts
+- **Fully responsive** with mobile navigation
+- **Scroll animations**, animated counters, glitch effects
 
 ## Setup
 
@@ -32,7 +32,7 @@ A beautifully designed, interactive developer portfolio built with PHP and SQLit
    - Username: `admin`
    - Password: `admin123`
 
-### ⚠️ IMPORTANT: Change Admin Password
+### IMPORTANT: Change Admin Password
 
 After first login, update the password in `includes/db.php`:
 

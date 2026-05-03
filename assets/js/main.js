@@ -121,18 +121,49 @@ filterBtns.forEach(btn => {
     });
 });
 
-// ===== Contact Form (demo) =====
+// ===== Contact Form — real AJAX submission =====
 const contactForm = document.getElementById('contactForm');
-contactForm?.addEventListener('submit', (e) => {
+contactForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const btn = contactForm.querySelector('[type="submit"]');
-    btn.textContent = 'Sending...';
-    btn.disabled = true;
-    setTimeout(() => {
-        btn.textContent = '✓ Message Sent!';
-        contactForm.reset();
-        setTimeout(() => { btn.textContent = 'Send Message'; btn.disabled = false; }, 3000);
-    }, 1500);
+
+    const submitBtn    = document.getElementById('submitBtn');
+    const submitText   = document.getElementById('submitText');
+    const submitSpinner = document.getElementById('submitSpinner');
+    const formAlert    = document.getElementById('formAlert');
+
+    // Loading state
+    submitBtn.disabled  = true;
+    submitText.style.display   = 'none';
+    submitSpinner.style.display = 'inline-flex';
+    formAlert.style.display    = 'none';
+    formAlert.className        = 'form-alert';
+
+    try {
+        const res  = await fetch('/api/contact.php', {
+            method: 'POST',
+            body: new FormData(contactForm),
+        });
+        const data = await res.json();
+
+        formAlert.style.display = 'block';
+
+        if (data.success) {
+            formAlert.classList.add('form-alert--success');
+            formAlert.textContent = data.message;
+            contactForm.reset();
+        } else {
+            formAlert.classList.add('form-alert--error');
+            formAlert.textContent = data.message;
+        }
+    } catch (err) {
+        formAlert.style.display = 'block';
+        formAlert.classList.add('form-alert--error');
+        formAlert.textContent = 'Network error. Please email me directly at chatebchilima20@gmail.com';
+    } finally {
+        submitBtn.disabled      = false;
+        submitText.style.display    = 'inline';
+        submitSpinner.style.display = 'none';
+    }
 });
 
 // ===== Glitch Title Effect =====

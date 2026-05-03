@@ -103,7 +103,7 @@ function buildHtml(string $name, string $email, string $subject, string $message
   <!-- Header -->
   <tr>
     <td style="background:#0d1117;padding:24px 32px;border-bottom:1px solid #21293a;">
-      <span style="font-size:20px;font-weight:800;color:#00ff88;font-family:'Courier New',monospace;">&#9889; Portfolio Contact</span>
+      <span style="font-size:20px;font-weight:800;color:#00ff88;font-family:'Courier New',monospace;">; Chate.dev Contact Form</span>
       <span style="display:block;font-size:11px;color:#6e7681;font-family:'Courier New',monospace;margin-top:3px;">// new message received</span>
     </td>
   </tr>
@@ -162,7 +162,7 @@ function buildHtml(string $name, string $email, string $subject, string $message
   <tr>
     <td style="padding:16px 32px;border-top:1px solid #21293a;text-align:center;">
       <p style="margin:0;font-size:11px;color:#6e7681;font-family:'Courier New',monospace;">
-        Sent via your portfolio &nbsp;&middot;&nbsp; chatebchilima20@gmail.com
+        Sent via the portfolio website &nbsp;&middot;&nbsp; chatebchilima20@gmail.com
       </p>
     </td>
   </tr>

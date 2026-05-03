@@ -220,24 +220,40 @@ require_once __DIR__ . '/includes/header.php';
         <div class="section-divider" data-reveal></div>
 
         <div class="contact-grid" data-reveal>
-            <form class="contact-form" id="contactForm">
+            <form class="contact-form" id="contactForm" novalidate>
+                <!-- Honeypot: hidden from humans, bots fill it -->
+                <div style="display:none;" aria-hidden="true">
+                    <input type="text" name="website" tabindex="-1" autocomplete="off">
+                </div>
+
                 <div class="form-group">
                     <label class="form-label">// Your Name</label>
-                    <input type="text" class="form-input" placeholder="John Doe" required>
+                    <input type="text" name="name" class="form-input" placeholder="John Doe" required>
                 </div>
                 <div class="form-group">
                     <label class="form-label">// Email Address</label>
-                    <input type="email" class="form-input" placeholder="john@example.com" required>
+                    <input type="email" name="email" class="form-input" placeholder="john@example.com" required>
                 </div>
                 <div class="form-group">
                     <label class="form-label">// Subject</label>
-                    <input type="text" class="form-input" placeholder="Project inquiry...">
+                    <input type="text" name="subject" class="form-input" placeholder="Project inquiry...">
                 </div>
                 <div class="form-group">
                     <label class="form-label">// Message</label>
-                    <textarea class="form-textarea" rows="5" placeholder="Tell me about your project..." required></textarea>
+                    <textarea name="message" class="form-textarea" rows="5" placeholder="Tell me about your project..." required></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Send Message &rarr;</button>
+
+                <div id="formAlert" style="display:none;" class="form-alert"></div>
+
+                <button type="submit" class="btn btn-primary" id="submitBtn">
+                    <span id="submitText">Send Message &rarr;</span>
+                    <span id="submitSpinner" style="display:none;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation:spin 1s linear infinite;">
+                            <path d="M21 12a9 9 0 1 1-6.219-8.56"/>
+                        </svg>
+                        Sending...
+                    </span>
+                </button>
             </form>
 
             <div class="contact-info">
